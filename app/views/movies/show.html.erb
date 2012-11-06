@@ -10,12 +10,18 @@
   <%= @movie.director.name %>
 </p>
 
+Cast:
 <ul>
   <% @movie.roles.each do |role| %>
-    <li><%= role.name %></li>
+    <li><%= role.actor.name %> is <%= role.name %></li>
   <% end %>
 </ul>
 
-
 <%= link_to 'Edit', edit_movie_path(@movie) %> |
 <%= link_to 'Back', movies_path %>
+
+
+
+
+
+

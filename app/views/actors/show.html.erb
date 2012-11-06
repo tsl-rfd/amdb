@@ -14,7 +14,7 @@
   <b>Roles</b>
   <ul>
   <% @actor.roles.each do |role| %>
-    <li><%= role.name %></li>
+    <li><%= role.name %> in <%= role.movie.title %>, directed by <%= role.movie.director.name %></li>
   <% end %>
   </ul>
 </p>
