@@ -3,6 +3,8 @@ class Movie < ActiveRecord::Base
 
   belongs_to :director
   
+  has_many :roles
+  
 end
 
 # m = Movie.first
