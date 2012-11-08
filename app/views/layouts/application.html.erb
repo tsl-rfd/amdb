@@ -14,9 +14,15 @@
     <%= link_to "Roles", roles_url %> |
     <%= link_to "Actors", actors_url %> |
     <%= link_to "Votes", votes_url %> |
-    <%= link_to "Users", users_url %> 
+    <%= link_to "Users", users_url %> |
+    <%= link_to "Sign In", "/sessions/new" %> 
   </nav>
 
+<ul>
+<% session.keys.each do |k| %>
+  <li><%= k %>: <%= session[k] %></li>
+<% end %>
+</ul>
 <%= yield %>
 
 </body>

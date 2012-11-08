@@ -15,6 +15,7 @@ class MoviesController < ApplicationController
   
   def show
     @movie = Movie.find(params[:id])
+    session["last_movie"] = @movie.title
     
     respond_to do |format|
       format.html # show.html.erb
