@@ -24,11 +24,15 @@ class VotesController < ApplicationController
   # GET /votes/new
   # GET /votes/new.json
   def new
-    @vote = Vote.new
+    if session["user_id"].blank?
+      redirect_to movies_url, notice: "No Chicago-style voting allowed!"
+    else
+      @vote = Vote.new
 
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @vote }
+      respond_to do |format|
+        format.html # new.html.erb
+        format.json { render json: @vote }
+      end
     end
   end
 
@@ -40,7 +44,9 @@ class VotesController < ApplicationController
   # POST /votes
   # POST /votes.json
   def create
-    @vote = Vote.new(params[:vote])
+    @vote = Vote.new
+    @vote.movie_id = params[:vote][:movie_id]
+    @vote.user_id = session["user_id"]
 
     respond_to do |format|
       if @vote.save

@@ -1,5 +1,7 @@
 Amdb::Application.routes.draw do
 
+  get '/logout' => "sessions#destroy"
+  
   # 1. Use this route to display a login form
   get "sessions/new" => "sessions#new"
   
